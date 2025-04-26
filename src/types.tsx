@@ -36,3 +36,32 @@ export type NavigationBarProps = {
   open: boolean;
   toggleDrawer: () => void;
 };
+
+export type AddCustomerProps = {
+  fetchCustomers: () => void;
+};
+
+export type EditCustomerProps = {
+  data: CustomerData;
+  fetchCustomers: () => void;
+};
+
+export type AddTrainingProps = {
+  fetchTrainings: () => void;
+};
+
+export type CustomerContentProps = {
+  customer: Customer;
+  setCustomer: React.Dispatch<React.SetStateAction<Customer>>;
+};
+
+export type TrainingContentProps = {
+  training: {
+    date: string;
+    duration: string;
+    activity: string;
+    customer: string;
+  };
+  setTraining: React.Dispatch<React.SetStateAction<any>>;
+  customers: CustomerData[];
+};
