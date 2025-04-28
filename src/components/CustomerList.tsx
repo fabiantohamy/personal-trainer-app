@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ModuleRegistry, ColDef, ICellRendererParams, themeMaterial } from 'ag-grid-community';
 import { Customer } from '../types';
@@ -14,6 +14,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 export default function CustomerList() {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [open, setOpen] = useState(false);
+  const gridRef = useRef<AgGridReact<Customer>>(null);
 
   const [columnDefs] = useState<ColDef<Customer>[]>([ 
     { field: "firstname", headerName: "First name", filter: true, width: 130 },
@@ -56,11 +57,25 @@ export default function CustomerList() {
     }
   };
 
+  const handleExport = () => {
+    gridRef.current?.api.exportDataAsCsv({
+      onlySelected: false,
+      allColumns: false,
+      columnKeys: [
+        'firstname', 'lastname', 'email', 'phone', 'streetaddress', 'postcode', 'city'
+      ]
+    });
+  };
+
   return (
     <>
       <AddCustomer fetchCustomers={fetchCustomers} />
+      <Button variant="outlined" onClick={handleExport} sx={{ mb: 2, ml: 2 }}>
+        Export CSV
+      </Button>
       <div style={{ width: '100%', height: 500 }}>
         <AgGridReact
+          ref={gridRef}
           rowData={customers}
           columnDefs={columnDefs}
           pagination={true}

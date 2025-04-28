@@ -10,6 +10,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import EventIcon from "@mui/icons-material/Event";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { NavigationBarProps } from "../types";
 
@@ -51,6 +52,14 @@ export default function NavigationBar({ open, toggleDrawer }: NavigationBarProps
                 <DirectionsRunIcon />
               </ListItemIcon>
               <ListItemText primary="Trainings" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="/calendar">
+              <ListItemIcon>
+                <EventIcon />
+              </ListItemIcon>
+              <ListItemText primary="Calendar" />
             </ListItemButton>
           </ListItem>
         </List>

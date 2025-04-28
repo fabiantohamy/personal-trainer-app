@@ -65,3 +65,9 @@ export type TrainingContentProps = {
   setTraining: React.Dispatch<React.SetStateAction<any>>;
   customers: CustomerData[];
 };
+
+export type CalendarEvent = {
+  title: string;
+  start: string;
+  end: string;
+};
