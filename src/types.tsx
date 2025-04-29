@@ -71,3 +71,8 @@ export type CalendarEvent = {
   start: string;
   end: string;
 };
+
+export type ChartData = {
+  activity: string;
+  duration: number;
+};

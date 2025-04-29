@@ -1,6 +1,7 @@
 import CustomerList from "./components/CustomerList";
 import TrainingList from "./components/TrainingList";
 import CalendarPage from "./components/CalendarPage";
+import StatisticsPage from './components/StatisticsPage';
 import NavigationBar from "./components/NavigationBar";
 import { useState } from "react";
 import Container from "@mui/material/Container";
@@ -51,6 +52,7 @@ function App() {
               <Route path="/" element={<CustomerList />} />
               <Route path="/trainings" element={<TrainingList />} />
               <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/statistics" element={<StatisticsPage />} />
             </Routes>
           </Container>
         </Box>
